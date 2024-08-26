@@ -1,4 +1,3 @@
-# Clog/Clog.py
 import logging,time,re
 from colorama import init,Fore,Style
 init(autoreset=True)
@@ -12,4 +11,4 @@ class ColoredFormatter(logging.Formatter):
 		D=E.highlight_paths(D);F=time.time()-A.created;G=f"[{B}{C}{Style.RESET_ALL} | {F:.2f} секунд] | {D}";return G
 	@staticmethod
 	def highlight_paths(message):A=re.compile('([A-Za-z]:\\\\(?:[^\\\\/:*?"<>|\\r\\n]+\\\\)*[^\\\\/:*?"<>|\\r\\n]*)|(/(?:[^/ ]*/)*[^/ ]*)');return A.sub(lambda match:Fore.YELLOW+match.group(0)+Style.RESET_ALL,message)
-def setup_custom_logger(name):A=logging.getLogger(name);A.setLevel(logging.DEBUG);B=logging.StreamHandler();B.setLevel(logging.DEBUG);C=ColoredFormatter('%(message)s');B.setFormatter(C);A.addHandler(B);return A
+def setuplogger(name):A=logging.getLogger(name);A.setLevel(logging.DEBUG);B=logging.StreamHandler();B.setLevel(logging.DEBUG);C=ColoredFormatter('%(message)s');B.setFormatter(C);A.addHandler(B);return A
